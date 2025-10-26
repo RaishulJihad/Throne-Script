@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Throne Script</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Logo Screen -->
+  <div id="logo-screen">
+    <img src="logo.png" alt="Throne Script Logo" id="logo-image">
+  </div>
+
+  <!-- Game Screen -->
+  <div id="game-screen" class="hidden">
+    <div class="top-bar">
+      <div class="top-left">Citizens: <span id="citizens">0</span></div>
+      <div class="top-center">Power: <span id="power">0</span></div>
+      <div class="top-right">Coins: <span id="coins">0</span></div>
+    </div>
+
+    <div class="main-buttons">
+      <button id="fight-btn">Fight</button>
+      <button id="recruit-btn">Recruit</button>
+    </div>
+
+    <div id="fight-options" class="hidden">
+      <button id="goblin-btn">Goblin (100 Power → +10 Coins)</button>
+      <button id="orc-btn">Orc (1000 Power → +100 Coins)</button>
+      <button class="back-btn" id="back-fight">Back</button>
+    </div>
+
+    <div id="recruit-options" class="hidden">
+      <button id="swordman-btn">Swordman (100 Coins → +100 Power)</button>
+      <button class="back-btn" id="back-recruit">Back</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
