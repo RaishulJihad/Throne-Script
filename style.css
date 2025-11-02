@@ -48,18 +48,23 @@ body {
 /* Circle Buttons */
 .circle-btn {
     position: fixed;
-    bottom: 20px;
-    width: 90px;
-    height: 90px;
+    bottom: 30px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
 }
 
 .circle-btn img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    border-radius: 50%;
 }
 
 /* Positioning */
