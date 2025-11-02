@@ -1,71 +1,78 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #0d0d0d;
-  color: #fff;
-  text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: royalblue;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    height: 100vh;
 }
 
 /* Logo Screen */
 #logo-screen {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: fadeOut 1s ease-in-out 2s forwards;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: opacity 2s ease;
 }
 
-#logo-image {
-  width: 80%;
-  max-width: 400px;
+#start-button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: limegreen;
+    color: white;
+    cursor: pointer;
 }
 
-/* Game Screen */
+.logo {
+    width: 300px;
+    height: auto;
+}
+
 .hidden {
-  display: none;
-}
-
-#game-screen {
-  padding: 20px;
+    display: none;
 }
 
 .top-bar {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  font-weight: bold;
-  background-color: #222;
-  border-radius: 10px;
-  margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    font-size: 20px;
 }
 
-button {
-  background-color: royalblue;
-  color: white;
-  border: none;
-  padding: 15px 20px;
-  margin: 10px;
-  border-radius: 10px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+/* Circle Buttons */
+.circle-btn {
+    position: fixed;
+    bottom: 20px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
 }
 
-button:hover {
-  background-color: #3a5edb;
+.circle-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.back-btn {
-  background-color: crimson;
+/* Positioning */
+.production-btn {
+    right: 20px;
 }
 
-@keyframes fadeOut {
-  to {
+.research-btn {
+    left: 20px;
+}
+
+/* Fade Animation */
+.fade-out {
     opacity: 0;
-    visibility: hidden;
-  }
+    transition: opacity 2s ease;
 }
