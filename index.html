@@ -1,42 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Throne Script</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throne Script</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Logo Screen -->
-  <div id="logo-screen">
-    <img src="logo.png" alt="Throne Script Logo" id="logo-image">
-  </div>
-
-  <!-- Game Screen -->
-  <div id="game-screen" class="hidden">
-    <div class="top-bar">
-      <div class="top-left">Citizens: <span id="citizens">0</span></div>
-      <div class="top-center">Power: <span id="power">0</span></div>
-      <div class="top-right">Coins: <span id="coins">0</span></div>
+    <!-- Logo Screen -->
+    <div id="logo-screen" class="fade-in">
+        <img src="logo.png" alt="Throne Script Logo" class="logo">
+        <button id="start-button">Start</button>
     </div>
 
-    <div class="main-buttons">
-      <button id="fight-btn">Fight</button>
-      <button id="recruit-btn">Recruit</button>
+    <!-- Main Game Screen -->
+    <div id="game-screen" class="hidden">
+        <div class="top-bar">
+            <span id="citizens">Citizens: 0</span>
+            <span id="power">Power: 0</span>
+            <span id="coins">Coins: 0</span>
+        </div>
+
+        <!-- Circle Buttons -->
+        <div class="circle-btn production-btn">
+            <img src="production.png" alt="Production Button">
+        </div>
+        <div class="circle-btn research-btn">
+            <img src="research.png" alt="Research Button">
+        </div>
     </div>
 
-    <div id="fight-options" class="hidden">
-      <button id="goblin-btn">Goblin (100 Power → +10 Coins)</button>
-      <button id="orc-btn">Orc (1000 Power → +100 Coins)</button>
-      <button class="back-btn" id="back-fight">Back</button>
-    </div>
-
-    <div id="recruit-options" class="hidden">
-      <button id="swordman-btn">Swordman (100 Coins → +100 Power)</button>
-      <button class="back-btn" id="back-recruit">Back</button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
