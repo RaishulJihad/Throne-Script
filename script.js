@@ -1,6 +1,10 @@
 const startScreen = document.getElementById("start-screen");
 const mainScreen = document.getElementById("main-screen");
+const actionScreen = document.getElementById("action-screen");
+
 const startBtn = document.getElementById("start-btn");
+const actionBtn = document.getElementById("action-btn");
+const backBtn = document.getElementById("back-btn");
 
 const timeDisplay = document.getElementById("time");
 const pauseBtn = document.getElementById("pause-btn");
@@ -13,7 +17,7 @@ let paused = false;
 let speed = 1000;
 let timer;
 
-// Fade-out start screen
+// --- Start Screen Fade ---
 startBtn.addEventListener("click", () => {
   startScreen.classList.add("fade-out");
   setTimeout(() => {
@@ -23,6 +27,7 @@ startBtn.addEventListener("click", () => {
   }, 2000);
 });
 
+// --- Time System ---
 function startTime() {
   timer = setInterval(() => {
     if (!paused) {
@@ -50,3 +55,16 @@ pauseBtn.addEventListener("click", () => paused = !paused);
 speed1Btn.addEventListener("click", () => setSpeed(1000));
 speed7Btn.addEventListener("click", () => setSpeed(1000 / 7));
 speed15Btn.addEventListener("click", () => setSpeed(1000 / 15));
+
+// --- Action Screen Function ---
+actionBtn.addEventListener("click", () => {
+  paused = true;
+  mainScreen.classList.add("hidden");
+  actionScreen.classList.remove("hidden");
+});
+
+backBtn.addEventListener("click", () => {
+  actionScreen.classList.add("hidden");
+  mainScreen.classList.remove("hidden");
+  paused = false;
+});
