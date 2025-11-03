@@ -1,11 +1,52 @@
-document.getElementById("start-button").addEventListener("click", () => {
-    const logoScreen = document.getElementById("logo-screen");
-    const gameScreen = document.getElementById("game-screen");
+const startScreen = document.getElementById("start-screen");
+const mainScreen = document.getElementById("main-screen");
+const startBtn = document.getElementById("start-btn");
 
-    logoScreen.classList.add("fade-out");
+const timeDisplay = document.getElementById("time");
+const pauseBtn = document.getElementById("pause-btn");
+const speed1Btn = document.getElementById("speed1-btn");
+const speed7Btn = document.getElementById("speed7-btn");
+const speed15Btn = document.getElementById("speed15-btn");
 
-    setTimeout(() => {
-        logoScreen.style.display = "none";
-        gameScreen.classList.remove("hidden");
-    }, 2000); // 2 seconds fade
+let day = 1, month = 1, year = 0;
+let paused = false;
+let speed = 1000;
+let timer;
+
+// Fade-out start screen
+startBtn.addEventListener("click", () => {
+  startScreen.classList.add("fade-out");
+  setTimeout(() => {
+    startScreen.style.display = "none";
+    mainScreen.classList.remove("hidden");
+    startTime();
+  }, 2000);
 });
+
+function startTime() {
+  timer = setInterval(() => {
+    if (!paused) {
+      day++;
+      if (day > 30) {
+        day = 1;
+        month++;
+        if (month > 12) {
+          month = 1;
+          year++;
+        }
+      }
+      timeDisplay.textContent = `${day}/${month}/${year}`;
+    }
+  }, speed);
+}
+
+function setSpeed(ms) {
+  clearInterval(timer);
+  speed = ms;
+  startTime();
+}
+
+pauseBtn.addEventListener("click", () => paused = !paused);
+speed1Btn.addEventListener("click", () => setSpeed(1000));
+speed7Btn.addEventListener("click", () => setSpeed(1000 / 7));
+speed15Btn.addEventListener("click", () => setSpeed(1000 / 15));
