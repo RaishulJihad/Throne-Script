@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Throne Script</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kingdom Simulation</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Logo Screen -->
-    <div id="logo-screen" class="fade-in">
-        <img src="logo.png" alt="Throne Script Logo" class="logo">
-        <button id="start-button">Start</button>
+  <div id="start-screen">
+    <img src="logo.png" alt="Game Logo" id="game-logo">
+    <button id="start-btn">Start</button>
+  </div>
+
+  <div id="main-screen" class="hidden">
+    <div class="top-bar">
+      <div class="status"><b>Citizens:</b> <span id="citizens">100</span></div>
+      <div class="status"><b>Power:</b> <span id="power">0</span></div>
+      <div class="status"><b>Coins:</b> <span id="coins">0</span></div>
+      <div class="status time"><b>Time:</b> <span id="time">1/1/0</span></div>
     </div>
 
-    <!-- Main Game Screen -->
-    <div id="game-screen" class="hidden">
-        <div class="top-bar">
-            <span id="citizens">Citizens: 0</span>
-            <span id="power">Power: 0</span>
-            <span id="coins">Coins: 0</span>
-        </div>
+    <div class="bottom-bar">
+      <div class="left-buttons">
+        <button class="circle-btn">⚛️</button> <!-- Research -->
+        <button id="pause-btn" class="circle-btn">⏸</button>
+        <button id="speed1-btn" class="circle-btn">x1</button>
+        <button id="speed7-btn" class="circle-btn">x7</button>
+        <button id="speed15-btn" class="circle-btn">x15</button>
+      </div>
 
-        <!-- Circle Buttons -->
-        <div class="circle-btn production-btn">
-            <img src="production.png" alt="Production Button">
-        </div>
-        <div class="circle-btn research-btn">
-            <img src="research.png" alt="Research Button">
-        </div>
+      <div class="right-buttons">
+        <button id="action-btn" class="circle-btn">⚙️</button>
+      </div>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
