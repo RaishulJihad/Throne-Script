@@ -7,11 +7,13 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Start Screen -->
   <div id="start-screen">
     <img src="logo.png" alt="Game Logo" id="game-logo">
     <button id="start-btn">Start</button>
   </div>
 
+  <!-- Main Screen -->
   <div id="main-screen" class="hidden">
     <div class="top-bar">
       <div class="status"><b>Citizens:</b> <span id="citizens">100</span></div>
@@ -22,7 +24,7 @@
 
     <div class="bottom-bar">
       <div class="left-buttons">
-        <button class="circle-btn">⚛️</button> <!-- Research -->
+        <button class="circle-btn">⚛️</button>
         <button id="pause-btn" class="circle-btn">⏸</button>
         <button id="speed1-btn" class="circle-btn">x1</button>
         <button id="speed7-btn" class="circle-btn">x7</button>
@@ -33,6 +35,23 @@
         <button id="action-btn" class="circle-btn">⚙️</button>
       </div>
     </div>
+  </div>
+
+  <!-- Action Screen -->
+  <div id="action-screen" class="hidden">
+    <div class="top-bar">
+      <div class="status"><b>Citizens:</b> <span id="a-citizens">100</span></div>
+      <div class="status"><b>Power:</b> <span id="a-power">0</span></div>
+      <div class="status"><b>Coins:</b> <span id="a-coins">0</span></div>
+    </div>
+
+    <div class="action-buttons">
+      <button class="square-btn">Citizens</button>
+      <button class="square-btn">Building</button>
+      <button class="square-btn">Production</button>
+    </div>
+
+    <button id="back-btn">Back</button>
   </div>
 
   <script src="script.js"></script>
