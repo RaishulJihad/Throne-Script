@@ -1,59 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kingdom Simulation</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Throne Script — Prototype</title>
+
+<!-- Link CSS -->
+<link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <!-- Start Screen -->
-  <div id="start-screen">
-    <img src="logo.png" alt="Game Logo" id="game-logo">
-    <button id="start-btn">Start</button>
+
+  <!-- Intro / splash -->
+  <div class="intro" id="intro">
+    <div class="title">Throne Script</div>
+    <button id="start" class="start-btn">START</button>
   </div>
 
-  <!-- Main Screen -->
-  <div id="main-screen" class="hidden">
-    <div class="top-bar">
-      <div class="status"><b>Citizens:</b> <span id="citizens">100</span></div>
-      <div class="status"><b>Power:</b> <span id="power">0</span></div>
-      <div class="status"><b>Coins:</b> <span id="coins">0</span></div>
-      <div class="status time"><b>Time:</b> <span id="time">1/1/0</span></div>
-    </div>
+  <!-- Main app -->
+  <div class="main" id="mainApp" aria-hidden="true">
 
-    <div class="bottom-bar">
-      <div class="left-buttons">
-        <button class="circle-btn">⚛️</button>
-        <button id="pause-btn" class="circle-btn">⏸</button>
-        <button id="speed1-btn" class="circle-btn">x1</button>
-        <button id="speed7-btn" class="circle-btn">x7</button>
-        <button id="speed15-btn" class="circle-btn">x15</button>
+    <!-- Header with stats -->
+    <header class="topbar">
+      <div class="stat">
+        <div class="label">Citizens:</div>
+        <div class="value" id="citizensVal">100</div>
       </div>
 
-      <div class="right-buttons">
-        <button id="action-btn" class="circle-btn">⚙️</button>
+      <div class="stat">
+        <div class="label">Power:</div>
+        <div class="value" id="powerVal">0</div>
+      </div>
+
+      <div class="stat">
+        <div class="label">Coins:</div>
+        <div class="value" id="coinsVal">0</div>
+      </div>
+
+      <div class="spacer"></div>
+
+      <div class="time-label" id="timeClickable">
+        <div class="label">Time</div>
+        <div class="value" id="timeVal">15/3/2025</div>
+      </div>
+    </header>
+
+    <div class="game-area">
+      <div class="placeholder">Game area / map will be here</div>
+    </div>
+
+    <div class="bottom-row">
+      <div class="left-group">
+        <button class="btn secondary" id="researchBtn">Research</button>
+        <button class="btn small" id="speedBtn">x1</button>
+      </div>
+
+      <div class="right-group">
+        <button class="btn action-btn" id="actionBtn">Action</button>
       </div>
     </div>
+
   </div>
 
-  <!-- Action Screen -->
-  <div id="action-screen" class="hidden">
-    <div class="top-bar">
-      <div class="status"><b>Citizens:</b> <span id="a-citizens">100</span></div>
-      <div class="status"><b>Power:</b> <span id="a-power">0</span></div>
-      <div class="status"><b>Coins:</b> <span id="a-coins">0</span></div>
-    </div>
+  <div class="float-msg" id="floatMsg">Pause</div>
 
-    <div class="action-buttons">
-      <button class="square-btn">Citizens</button>
-      <button class="square-btn">Building</button>
-      <button class="square-btn">Production</button>
-    </div>
+<!-- Link JS -->
+<script src="game.js"></script>
 
-    <button id="back-btn">Back</button>
-  </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
