@@ -1,70 +1,88 @@
-const startScreen = document.getElementById("start-screen");
-const mainScreen = document.getElementById("main-screen");
-const actionScreen = document.getElementById("action-screen");
+// Initial State
+const state = {
+  citizens: 100,
+  power: 0,
+  coins: 0,
+  date: new Date('2025-03-15T00:00:00Z'),
+  paused: false,
+  speeds: [1, 3, 5, 10],
+  speedIndex: 0
+};
 
-const startBtn = document.getElementById("start-btn");
-const actionBtn = document.getElementById("action-btn");
-const backBtn = document.getElementById("back-btn");
+// DOM
+const intro = document.getElementById('intro');
+const startBtn = document.getElementById('start');
+const mainApp = document.getElementById('mainApp');
 
-const timeDisplay = document.getElementById("time");
-const pauseBtn = document.getElementById("pause-btn");
-const speed1Btn = document.getElementById("speed1-btn");
-const speed7Btn = document.getElementById("speed7-btn");
-const speed15Btn = document.getElementById("speed15-btn");
+const citizensVal = document.getElementById('citizensVal');
+const powerVal = document.getElementById('powerVal');
+const coinsVal = document.getElementById('coinsVal');
+const timeVal = document.getElementById('timeVal');
 
-let day = 1, month = 1, year = 0;
-let paused = false;
-let speed = 1000;
-let timer;
+const speedBtn = document.getElementById('speedBtn');
+const timeClickable = document.getElementById('timeClickable');
+const floatMsg = document.getElementById('floatMsg');
 
-// --- Start Screen Fade ---
-startBtn.addEventListener("click", () => {
-  startScreen.classList.add("fade-out");
+const researchBtn = document.getElementById('researchBtn');
+const actionBtn = document.getElementById('actionBtn');
+
+// Format D/M/Y
+function formatDMY(d){
+  return `${d.getUTCDate()}/${d.getUTCMonth()+1}/${d.getUTCFullYear()}`;
+}
+
+function updateUI(){
+  citizensVal.textContent = state.citizens;
+  powerVal.textContent = state.power;
+  coinsVal.textContent = state.coins;
+  timeVal.textContent = formatDMY(state.date);
+  speedBtn.textContent = 'x' + state.speeds[state.speedIndex];
+}
+
+function addDays(n){
+  state.date = new Date(state.date.getTime() + n * 86400000);
+}
+
+let floatTimeout = null;
+function showFloat(msg){
+  if(floatTimeout){ clearTimeout(floatTimeout); }
+  floatMsg.textContent = msg;
+  floatMsg.classList.add('show');
+  floatTimeout = setTimeout(() => floatMsg.classList.remove('show'), 1000);
+}
+
+function cycleSpeed(){
+  state.speedIndex = (state.speedIndex + 1) % state.speeds.length;
+  updateUI();
+}
+
+function togglePause(){
+  state.paused = !state.paused;
+  showFloat(state.paused ? "Pause" : "Resume");
+}
+
+updateUI();
+
+// Time loop
+setInterval(() => {
+  if(!state.paused){
+    addDays(state.speeds[state.speedIndex]);
+    updateUI();
+  }
+}, 1000);
+
+// Start button → fade intro
+startBtn.addEventListener('click', () => {
+  intro.classList.add('hiding');
   setTimeout(() => {
-    startScreen.style.display = "none";
-    mainScreen.classList.remove("hidden");
-    startTime();
-  }, 2000);
+    intro.style.display = 'none';
+    mainApp.classList.add('visible');
+  }, 850);
 });
 
-// --- Time System ---
-function startTime() {
-  timer = setInterval(() => {
-    if (!paused) {
-      day++;
-      if (day > 30) {
-        day = 1;
-        month++;
-        if (month > 12) {
-          month = 1;
-          year++;
-        }
-      }
-      timeDisplay.textContent = `${day}/${month}/${year}`;
-    }
-  }, speed);
-}
+// Buttons
+speedBtn.addEventListener('click', cycleSpeed);
+timeClickable.addEventListener('click', togglePause);
 
-function setSpeed(ms) {
-  clearInterval(timer);
-  speed = ms;
-  startTime();
-}
-
-pauseBtn.addEventListener("click", () => paused = !paused);
-speed1Btn.addEventListener("click", () => setSpeed(1000));
-speed7Btn.addEventListener("click", () => setSpeed(1000 / 7));
-speed15Btn.addEventListener("click", () => setSpeed(1000 / 15));
-
-// --- Action Screen Function ---
-actionBtn.addEventListener("click", () => {
-  paused = true;
-  mainScreen.classList.add("hidden");
-  actionScreen.classList.remove("hidden");
-});
-
-backBtn.addEventListener("click", () => {
-  actionScreen.classList.add("hidden");
-  mainScreen.classList.remove("hidden");
-  paused = false;
-});
+researchBtn.onclick = () => {}; // placeholder
+actionBtn.onclick = () => {};   // placeholder
