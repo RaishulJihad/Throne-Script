@@ -1,71 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Throne Script — Prototype</title>
-
-<!-- Link CSS -->
-<link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throne Script</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- Intro / splash -->
-  <div class="intro" id="intro">
-    <div class="title">Throne Script</div>
-    <button id="start" class="start-btn">START</button>
-  </div>
-
-  <!-- Main app -->
-  <div class="main" id="mainApp" aria-hidden="true">
-
-    <!-- Header with stats -->
-    <header class="topbar">
-      <div class="stat">
-        <div class="label">Citizens:</div>
-        <div class="value" id="citizensVal">100</div>
-      </div>
-
-      <div class="stat">
-        <div class="label">Power:</div>
-        <div class="value" id="powerVal">0</div>
-      </div>
-
-      <div class="stat">
-        <div class="label">Coins:</div>
-        <div class="value" id="coinsVal">0</div>
-      </div>
-
-      <div class="spacer"></div>
-
-      <div class="time-label" id="timeClickable">
-        <div class="label">Time</div>
-        <div class="value" id="timeVal">15/3/2025</div>
-      </div>
-    </header>
-
-    <div class="game-area">
-      <div class="placeholder">Game area / map will be here</div>
+    <!-- INTRO SCREEN -->
+    <div id="intro">
+        <h1 id="intro-title">Throne Script</h1>
+        <button id="start-btn">Start</button>
     </div>
 
-    <div class="bottom-row">
-      <div class="left-group">
-        <button class="btn secondary" id="researchBtn">Research</button>
-        <button class="btn small" id="speedBtn">x1</button>
-      </div>
+    <!-- MAIN SCREEN -->
+    <div id="main-screen">
 
-      <div class="right-group">
-        <button class="btn action-btn" id="actionBtn">Action</button>
-      </div>
+        <!-- TOP BAR -->
+        <div id="top-bar">
+            <span id="citizens">Citizens: 100</span>
+            <span id="power">Power: 50</span>
+            <span id="coins">Coins: 200</span>
+            <span id="time-label">1/1/2025</span>
+        </div>
+
+        <!-- BOTTOM BUTTONS -->
+        <button id="research-btn" class="bottom-btn left-btn">Research</button>
+        <button id="speed-btn" class="bottom-btn mid-btn">x1</button>
+        <button id="action-btn" class="bottom-btn right-btn">Action</button>
+
+        <!-- PAUSE/RESUME POPUP -->
+        <div id="popup-message"></div>
+
     </div>
 
-  </div>
-
-  <div class="float-msg" id="floatMsg">Pause</div>
-
-<!-- Link JS -->
-<script src="game.js"></script>
-
+    <script src="game.js"></script>
 </body>
 </html>
